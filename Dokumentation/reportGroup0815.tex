@@ -1,0 +1,92 @@
+\documentclass[pdf]{ifacconf}
+
+
+\usepackage{amsmath}
+\usepackage{natbib}            % you should have natbib.sty
+\usepackage{graphicx}          % Include this line if your 
+                               % document contains figures,
+%\usepackage[dvips]{epsfig}    % or this line, depending on which
+                               % you prefer.
+                               
+\usepackage{units}
+
+% for German
+%\usepackage{ngerman}           % neue Deutsche Rechtschreibung, Silbentrennung
+\usepackage[UTF8]{inputenc}  % Eingabe von Umlaute im Editor
+%\usepackage[T1]{fontenc}       % Trennung mit Umlauten
+
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=newest} 
+\usetikzlibrary{shapes,arrows,positioning,arrows.meta}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Report for the Course ``Projektwettbewerb Einführung in die Regelungstechnik''}
+
+%\thanks[footnoteinfo]{Institute for Systems Theory and Automatic Control, University of Stuttgart, Germany. \textit{http://www.ist.uni-stuttgart.de}}
+
+% include all authors, underline corresponding author
+%\author{\underline{},} 
+\author{Alessio Gaggiano, Shadi Rafe, Truc-Quynh Doan (Group 2)} 
+% \author{}
+
+\begin{abstract}                          % Abstract of not more than 250 words.
+This is a template for the laboratory course ``Projektwettbewerb Einführung in die Regelungstechnik'' at the Institute for Systems Theory and Automatic Control, University of Stuttgart. Use this document to write your report with \LaTeX\ (cf. \cite{Knuth2005}).
+\end{abstract}
+
+\end{frontmatter}
+
+\section{Introduction}
+We have designed a state feedback for the single-track model based on inverse kinematics, loop-shaping, feedback linearization, and robot navigation functions.
+
+\section{Main Idea}
+Our design procedure was based on the idea that accelerating a vehicle results in shorter lap times than braking a vehicle. For presentational conciseness, we have listed some important parameters in Table 1.
+
+\begin{table}[h]
+\caption{Important Parameters.}
+\label{table:working plan}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\bfseries Parameter & \bfseries Value \\ \hline \hline
+lap time $t_{\text{f}}$ & $\infty$ \\ \hline
+control gain $k$ & $0$ \\ \hline
+steering angle $\delta$ & $-\left( e^{i \pi}+1\right)$ \\ \hline
+ \end{tabular}
+\end{table}
+
+\section{Result}
+We have achieved a lap time of $t_{\text{f}}=\infty$. We have depicted a plot of vehicle velocity $v$ versus an independent curve parameter $\gamma$, with which we have parameterized the racetrack, in Fig. 1. 
+
+\begin{figure}[h] % use \begin{figure*} for two-column figure
+\begin{center}
+\input{inout_ramps.tex}
+\caption{Some arbitrary plot (using tikz) which doesn't have anything to do with Projektwettbewerb ERT.}
+\label{fig1}
+\end{center}
+\end{figure}
+
+\begin{figure}[h] % use \begin{figure*} for two-column figure
+\begin{center}
+\includegraphics[width=.8\columnwidth]{bode} % inclusion of pdf or png
+\caption{Some arbitrary plot (using png) which doesn't have anything to do with Projektwettbewerb ERT.}
+\label{fig1}
+\end{center}
+\end{figure}
+
+
+
+\begin{thebibliography}{3}
+
+\bibitem[(Knuth2005)]{Knuth2005}
+Knuth,~D.~E. (2005).
+\newblock The Art of Computer Programming.
+\newblock Pearson Education.
+
+\end{thebibliography}
+
+%\appendix
+\end{document}
