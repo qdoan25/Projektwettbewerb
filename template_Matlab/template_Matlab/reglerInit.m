@@ -9,8 +9,17 @@ A = [0 1 0 0 0 0;...
     0 0 0 0 0 1;...
     -770.27 1e-16 2*10^-15 -5.55 792.07 0];
 
-B = [0; -42.95; 0; 429.59; 0; 2931.20];
-C = [0 0 1 0 0 0;0 0 0 0 0 1];
+B = [0;...
+    -42.95;...
+    0;...
+    429.59;...
+    0;...
+    2931.20];
+
+C = [0 0 1 0 0 0;...
+    0 0 0 0 0 1];
+
+
 
 % Gewichtungsmatrizen
 %Q = diag([1 1 1 1 1 1]);
@@ -21,8 +30,8 @@ R = 10000;
 K_LQR = lqr(A,B,Q,R);
 
 % Pole ausrechnen
-%Pole = eig(A-B*K_LQR);
-Pole = eig(A-E*K_LQR);
+Pole = eig(A-B*K_LQR);
+%Pole = eig(A-E*K_LQR);
 
 % Pole platzieren
 E = place(A,C,Pole);
