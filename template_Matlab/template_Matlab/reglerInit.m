@@ -22,9 +22,9 @@ C = [0 0 1 0 0 0;...
 
 
 % Gewichtungsmatrizen
-%Q = diag([1 1 1 1 1 1]);
-Q = diag([0.01 0.01 10 0.01 0.01 0.01]);
-R = 100;
+Q = diag([1 1 1 1 1 1]);
+%Q = diag([0.01 0.01 10 0.01 0.01 0.01]);
+R = 1;
 
 % Reglerentwurf
 K_LQR = lqr(A,B,Q,R);

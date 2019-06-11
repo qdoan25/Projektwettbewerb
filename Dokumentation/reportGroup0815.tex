@@ -9,9 +9,11 @@
                                % you prefer.
                                
 \usepackage{units}
+%\usepackage{babelbib}
+%\bibliographystyle{babunsrt}
 
 % for German
-%\usepackage{ngerman}           % neue Deutsche Rechtschreibung, Silbentrennung
+\usepackage{ngerman}           % neue Deutsche Rechtschreibung, Silbentrennung
 \usepackage[UTF8]{inputenc}  % Eingabe von Umlaute im Editor
 %\usepackage[T1]{fontenc}       % Trennung mit Umlauten
 
@@ -35,8 +37,8 @@ Wippe}
 \author{Alessio Gaggiano, Shadi Rafe, Truc-Quynh Doan (Group 2)} 
 % \author{}
 
-\begin{abstract}                          % Abstract of not more than 250 words.
-Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes der regelungstechnischen Aufgabe "Stabilisierung eines Segways auf einer Wippe". 
+\begin{abstract}\\                          % Abstract of not more than 250 words.
+Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes der regelungstechnischen Aufgabe ``Stabilisierung eines Segways auf einer Wippe''. 
 %This is a template for the laboratory course ``Projektwettbewerb Einführung in die Regelungstechnik'' at the Institute for Systems Theory and Automatic Control, University of Stuttgart. Use this document to write your report with \LaTeX\ (cf. \cite{Knuth2005}).
 \end{abstract}
 
@@ -46,7 +48,7 @@ Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lö
 
 We have designed a state feedback for the single-track model based on inverse kinematics, loop-shaping, feedback linearization, and robot navigation functions.
 
-\section{Main Idea}
+\section{Lösungsansatz}
 Our design procedure was based on the idea that accelerating a vehicle results in shorter lap times than braking a vehicle. For presentational conciseness, we have listed some important parameters in Table 1.
 
 \begin{table}[h]
@@ -62,7 +64,7 @@ steering angle $\delta$ & $-\left( e^{i \pi}+1\right)$ \\ \hline
  \end{tabular}
 \end{table}
 
-\section{Result}
+\section{Fazit}
 We have achieved a lap time of $t_{\text{f}}=\infty$. We have depicted a plot of vehicle velocity $v$ versus an independent curve parameter $\gamma$, with which we have parameterized the racetrack, in Fig. 1. 
 
 \begin{figure}[h] % use \begin{figure*} for two-column figure
@@ -82,15 +84,17 @@ We have achieved a lap time of $t_{\text{f}}=\infty$. We have depicted a plot of
 \end{figure}
 
 
+\bibliography{Literatur}
 
-\begin{thebibliography}{3}
 
-\bibitem[(Knuth2005)]{Knuth2005}
-Knuth,~D.~E. (2005).
-\newblock The Art of Computer Programming.
-\newblock Pearson Education.
-
-\end{thebibliography}
+%\begin{thebibliography}{3}
+%
+%\bibitem[(Knuth2005)]{Knuth2005}
+%Knuth,~D.~E. (2005).
+%\newblock The Art of Computer Programming.
+%\newblock Pearson Education.
+%
+%\end{thebibliography}
 
 %\appendix
 \end{document}
