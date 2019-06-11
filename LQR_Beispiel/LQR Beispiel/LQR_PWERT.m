@@ -7,9 +7,9 @@ B = [0; -42.95; 0; 429.59; 0; 2931.20];
 x0 = [-pi/6 0 0.2 0 0 0];
 
 % Gewichtungsmatrizen
-Q = diag([1 1 1 1 1 1]);
-%Q = diag([1000 1 1000 1 1 1000]);
-R = 0.001;
+Q = diag([0.01 0.01 10 0.01 0.01 0.01]);
+R = 100;
+
 
 % Reglerentwurf
 K_LQR = lqr(A,B,Q,R);

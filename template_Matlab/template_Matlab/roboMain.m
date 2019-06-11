@@ -16,7 +16,7 @@ g = 9.81;       %Erdanziehung in m/s^2
 %Wippe
 m_w = 10;       % Masse Wippe in kg 
 k_w = 2;        % Federsteifigkeit in Nm/rad 
-d_w = 0.4;      %Daempfung in Nm*s/rad
+d_w = 0.4;      % Daempfung in Nm*s/rad
 L = 1.2;        % Laenge Wippe in m
 b = 0.02;       %Breite Wippe in m
 J_w = 1/12*m_w*(b^2+L^2);   %Traegheitmoment Wippe 
