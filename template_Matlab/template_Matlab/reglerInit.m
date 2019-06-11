@@ -23,18 +23,23 @@ C = [0 0 1 0 0 0;...
 
 % Gewichtungsmatrizen
 %Q = diag([1 1 1 1 1 1]);
-Q = diag([1000 1 1000 1 1 1000]);
+Q = diag([5 1 5 1 1 20]);
 R = 10000;
 
 % Reglerentwurf
 K_LQR = lqr(A,B,Q,R);
 
 % Pole ausrechnen
-Pole = eig(A-B*K_LQR);
+Pole = eig(A-B*K_LQR)
+
+%Wunsch-Pole für Beobachter 
+%(sollten links von den Polen des Sys liegen)
 %Pole = eig(A-E*K_LQR);
 
+Pole_Beobachter = Pole+ [-3;-3;-3;-3;-3;-3;]
+
 % Pole platzieren
-E = place(A,C,Pole);
+E = place(A',C',Pole_Beobachter);
 
 
 
