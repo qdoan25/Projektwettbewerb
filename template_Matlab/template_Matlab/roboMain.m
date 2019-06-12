@@ -37,7 +37,7 @@ r = 0.041; %Radradius in m
 J_r = 1/2*m_r*r^2; %Traegheitsmoment Rad 
 
 % Stoerung
-Stoerung1 = 0 %.1; % .1 = Stoerung ein, 0 = aus
+Stoerung1 = 0.1; % .1 = Stoerung ein, 0 = aus
 stoerungNoisePower = 1;
 stoerungSeed_1 = round((1e4-1)*rand(1));
 

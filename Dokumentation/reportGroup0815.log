@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.5)  11 JUN 2019 12:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.5)  12 JUN 2019 18:07
 entering extended mode
 **./reportGroup0815.tex
 (reportGroup0815.tex
@@ -1123,7 +1123,7 @@ Missing character: There is no ; in font nullfont!
 <bode.png, id=4, 484.81125pt x 360.91982pt>
 File: bode.png Graphic file (type png)
 <use bode.png>
-Package pdftex.def Info: bode.png  used on input line 80.
+Package pdftex.def Info: bode.png  used on input line 85.
 (pdftex.def)             Requested size: 201.44627pt x 149.96617pt.
 
 
@@ -1143,7 +1143,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  26169 strings out of 492945
  678636 string characters out of 3135514
- 1144415 words of memory out of 3000000
+ 1144501 words of memory out of 3000000
  29604 multiletter control sequences out of 15000+200000
  9179 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1161,7 +1161,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on reportGroup0815.pdf (1 page, 199595 bytes).
+Output written on reportGroup0815.pdf (1 page, 199288 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
