@@ -46,13 +46,18 @@ Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lö
 
 \section{Motivation}
 %We have designed a state feedback for the single-track model based on inverse kinematics, loop-shaping, feedback linearization, and robot navigation functions.
-
 Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways auf einer Wippe, die durch ein Feder-Dämpfer-System gelagert wird und mit einem Helligkeitsverlauf versehen ist. Dabei soll das Segway eine Sollposition halten. 
 
 
 \section{Lösungsansatz}
 %Our design procedure was based on the idea that accelerating a vehicle results in shorter lap times than braking a vehicle. For presentational conciseness, we have listed some important parameters in Table 1.
-Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung. Eine Linearisierung des Systems ist nötig.
+Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung ``Einführung in die Regelungstechnik''. Eine Linearisierung des Systems ist nötig.
+%Stabilitär => Zustandsrückführung
+%LQR Regler
+%Regler mit nichtlinearen System zusammengeschaltet
+%Pole vorgebbar => Beobachter, da nicht alle Zustände messbar
+%Zustandsrückführung mit Beobachter verbinden 
+%Vorfilter
 
 
 
