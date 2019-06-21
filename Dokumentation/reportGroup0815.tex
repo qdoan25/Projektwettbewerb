@@ -34,11 +34,11 @@ Wippe}
 
 % include all authors, underline corresponding author
 %\author{\underline{},} 
-\author{Alessio Gaggiano, Shadi Rafe, Truc-Quynh Doan} 
-% \author{}
+\author{Alessio Gaggiano (Kyb 3129632), Shadi Rafe(Kyb ********), Truc-Quynh Doan(Kyb 3152793)} 
+
 
 \begin{abstract}\\                          % Abstract of not more than 250 words.
-Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes der regelungstechnischen Aufgabe ``Stabilisierung eines Segways auf einer Wippe''. 
+Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes und der Ergebnisse der regelungstechnischen Aufgabe ``Stabilisierung eines Segways auf einer Wippe''. 
 %This is a template for the laboratory course ``Projektwettbewerb Einführung in die Regelungstechnik'' at the Institute for Systems Theory and Automatic Control, University of Stuttgart. Use this document to write your report with \LaTeX\ (cf. \cite{Knuth2005}).
 \end{abstract}
 
@@ -46,24 +46,67 @@ Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lö
 
 \section{Motivation}
 %We have designed a state feedback for the single-track model based on inverse kinematics, loop-shaping, feedback linearization, and robot navigation functions.
-
 Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways auf einer Wippe, die durch ein Feder-Dämpfer-System gelagert wird und mit einem Helligkeitsverlauf versehen ist. Dabei soll das Segway eine Sollposition halten. 
 
+\section{Modellbeschreibung}
+%füge Abb.SystematischerAufbau.jpg ein
 
+	\subsection{Wippe}
+	Die Wippe hat eine rechteckige Auflage und ist 1.2m lang und 0.6m breit, auf welcher sich der Roboter vor- und zurückbewegen kann.
+	Da die Bewegungsrichtung des Roboters nur einseitig erfolgt, ergibt sich daraus eine Beschränkung der Strecke von [-0.6,0.6].
+	Die Drehung der Wippe ist auf alphaw = [-pi/6, pi/6] beschränkt.
+	Die Mitte der Wippe ist dabei die dunkelste Stelle des Farbverlaufs. Vgl. Abb. 
+	\subsection{Segway}
+	Die Raddrehung des Segways wird ohne Schlupf und ohne Reibung angenommen und der Schwerpunkt der Gesamtmasse ist im Punkt S konzentriert. 
+	In der Regelungsaufgabe ist die absolute Drehung des Segways zur Vertikalen auf alphas = [-7*pi/6, 7*pi/6] beschränkt. %? 
+
+	\subsection{Zustandsraum}
+	%Erwähne die Komponenten der generalisierten Koordinaten
+	%sechs Zustände
+	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
+	Dabei hat der Zustandsvektor folgende Form:
+	%....Formel z = [..]
+	wobei alphaw: 
+	alphawp:
+	x:
+	xp:
+	alphs:
+	alphasp:
+	
+		\subsubsection{Messgrößen}
+		Mittels des Lichtsensors wird die Position der Radachse x über den Farbverlauf der Wippe gemessen. Der eingebaute Gyroskop misst die absolute Drehgeschwindigkeit alphasp des Segways.
+		
+		\subsubsection{Stellgröße}
+		Die uns zur Verfügung stehende Stellgröße entspricht der elektrischen Motorleistung des Segways. Diese ist auf 3.56 Watt (vgl. Tabelle) beschränkt.
+		Hier wurde zwischen absoluter und relativer Leistung unterschieden. Mit Hilfe einer gegebenen Motorkennlinie für verschiedene Leistungsstufen ließen sich die Stellgrößenbeschränkungen aus den folgenden Zusammenhang ermitteln.
+		%umwandlung rel. und abs. 
+
+	
 \section{Lösungsansatz}
 %Our design procedure was based on the idea that accelerating a vehicle results in shorter lap times than braking a vehicle. For presentational conciseness, we have listed some important parameters in Table 1.
-
 %Modellierung => Linearisierung
-%sechs Zustände
-%Stabilität => Zustandsrückführung
-%LQR-Regler
-%Regler mit nichtlinearen System zusammengeschaltet
-%Pole vorgebbar => Beobachter, da nicht alle Zustände messbar
-%Lueberger Beobachter 
-%Zustandsrückführung mit Beobachter verbinden 
-%Regelaweichung => Vorfilter
 
-Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung ``Einführung in die Regelungstechnik''. Eine Linearisierung des Systems ist nötig.
+	\subsection{Linearisierung}
+	Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung ``Einführung in die Regelungstechnik''. 
+	Eine Linearisierung des Systems um den stationären Arbeitspunkt ist daher nötig.
+
+	\subsection {Stabilität}
+	%Steuerbar => Reglerpole vorgebbar
+	% => Zustandsrückführung
+	%Erwähne Umrechnung der Stellgröße
+	%LQR-Regler
+
+%Regler mit nichtlinearen System zusammengeschaltet
+
+	\subsection {Beobachter}
+		%Linearisiertes System ist beobachtbar
+	%Pole vorgebbar => Beobachter, da nicht alle Zustände messbar
+	%Lueberger Beobachter 
+
+	%Zustandsrückführung mit Beobachter verbinden 
+
+	\subsection{Bleibende Regelaweichung}
+	%Regelaweichung => Vorfilter
 
 
 

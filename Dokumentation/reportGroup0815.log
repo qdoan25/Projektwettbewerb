@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.5)  12 JUN 2019 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.5)  21 JUN 2019 21:35
 entering extended mode
 **./reportGroup0815.tex
 (reportGroup0815.tex
@@ -1115,17 +1115,24 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.16}).
 
 LaTeX Font Info:    Calculating math sizes for size <14> on input line 31.
+
+Overfull \hbox (168.64702pt too wide) in paragraph at lines 37--38
+ [][] 
+ []
+
 \c@sv@footnote=\count156
 (inout_ramps.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 )
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <bode.png, id=4, 484.81125pt x 360.91982pt>
 File: bode.png Graphic file (type png)
 <use bode.png>
-Package pdftex.def Info: bode.png  used on input line 85.
+Package pdftex.def Info: bode.png  used on input line 141.
 (pdftex.def)             Requested size: 201.44627pt x 149.96617pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1135,17 +1142,20 @@ Package natbib Warning: Empty `thebibliography' environment on input line 8.
 
 ) [1{C:/Users/quynh/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
+]
+[2
+
  <./bode.png>] (reportGroup0815.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 26169 strings out of 492945
- 678636 string characters out of 3135514
- 1144501 words of memory out of 3000000
- 29604 multiletter control sequences out of 15000+200000
- 9179 words of font info for 37 fonts, out of 3000000 for 9000
+ 26171 strings out of 492945
+ 678657 string characters out of 3135514
+ 1142989 words of memory out of 3000000
+ 29605 multiletter control sequences out of 15000+200000
+ 9525 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,21n,136p,1721b,2248s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
@@ -1160,10 +1170,11 @@ fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on reportGroup0815.pdf (1 page, 199288 bytes).
+/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb>
+Output written on reportGroup0815.pdf (2 pages, 222317 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
