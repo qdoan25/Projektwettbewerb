@@ -47,13 +47,26 @@ Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lö
 Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways auf einer Wippe, die durch ein Feder-Dämpfer-System gelagert wird und mit einem Helligkeitsverlauf versehen ist. Dabei soll das Segway eine Sollposition halten. 
 
 \section{Modellbeschreibung}
-%füge Abb.SystematischerAufbau.jpg ein
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/SystematischerAufbau.jpg}}
+	\label{fig:theFig}
+	\caption{\textit{Systematischer Aufbau}}
+\end{figure}
+
 
 	\subsection{Wippe}
 	Die Wippe hat eine rechteckige Auflage und ist 1.2m lang und 0.6m breit, auf 			welcher sich der Roboter vor- und zurückbewegen kann.
 	Da die Bewegungsrichtung des Roboters nur einseitig erfolgt, ergibt sich daraus 		eine Beschränkung der Strecke von [-0.6, 0.6].
 	Die Drehung der Wippe ist auf $\alpha^{}_{\omega}$ = [-$\frac{\pi}{6}$, $\frac{\pi}{6}$] beschränkt.
-	Die Mitte der Wippe ist dabei die dunkelste Stelle des Farbverlaufs. Vgl. Abb. 
+	Die Mitte der Wippe ist dabei die dunkelste Stelle des Farbverlaufs (vgl. Abb.~\ref{Helligkeit}).
+	
+	
+	\begin{figure}[h]	
+	\centerline{\includegraphics[width=\linewidth]{Bilder/Farbverlauf.jpg}}
+	\label{Helligkeit}
+	\caption{\textit{Helligkeitsverlauf}}
+	\end{figure}
+	
 	\subsection{Segway}
 	Die Raddrehung des Segways wird ohne Schlupf und ohne Reibung angenommen und der 		Schwerpunkt der Gesamtmasse ist im Punkt S konzentriert. 
 	In der Regelungsaufgabe ist die absolute Drehung des Segways zur Vertikalen auf 		$\alpha^{}_{s}$ = [-$\frac{7\pi}{6}$, $\frac{7\pi}{6}$] beschränkt. %? 
@@ -63,7 +76,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%sechs Zustände
 	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch 		im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
 	Dabei hat der Zustandsvektor folgende Form:
-%	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]^{T} \\
+	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]%^{T} \\
 	$\alpha^{}_{\omega}$: Winkel\\
 	$\dot{\alpha^{}_{\omega}}$: Drehgeschwindigkeit der Wippe\\
 	x:  Position der Radachse\\
@@ -98,21 +111,40 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	Da das linearistierte System steuerbar ist, sind die Pole der Strecke mittels eines Regler 			beliebig vorgebbar. Um die optimalen Sollpole zu finden, wurde ein LQR-Regler gewählt, 				welcher mittels der Gewichtungsmatrizen \textit{Q} und \textit{R} eingestellt wurde.
 	Durch iteratives Vorgehen haben wir für Q eine Einheitsmatrix gewählt, was einer   					gleichstarken Gewichtung der Zustände entspricht. R wurde auf 1 gesetzt.
 	
-\begin{figure}[h]	\centerline{\includegraphics[width=\linewidth]{PID-Regler.eps}}
-	\label{fig:theFig}
-	\caption{\textit{PID-Regler}\newline \textbf{links}: kein D-Anteil; \textbf{Mitte}: D-Anteil passend; \textbf{rechts}: D-Anteil zu groß}
-\end{figure}
 
 
 	%Regler mit nichtlinearen System zusammengeschaltet
 
 	\subsection{Beobachter}
-		
+	
+\begin{figure*}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Regler.jpg}}
+	\label{Regleraufbau}
+	\caption{Regleraufbau im Simulinkmodell}
+\end{figure*}
+
+
+
+
 	Da am eigentlichen System nicht alle Zustände messbar sind, die für die Zustandsregelung 			mit dem LQR-Regler gebraucht werden, ist die Zuschaltung eines Beobachters nötig.
 	Um diesen zu realisieren muss die Beobachtbarkeit des linearen Systems gewährleistet sein.
 	Dies hat sich durch einer Analyse bestätigt.
-	Hierzu haben wir die Struktur eines Luenberger-Beobachters eingesetzt und parallel zum            	Regelstreckenmodell geschaltet (vgl. Screenshot). Für die Wahl der Beobachterpole ist zu beachten, dass sich diese links der Pole des Zustandsreglers befinden, sodass die rekonstruierten Zustände den realen besser folgen. Um das verursachte Rauschen des Beobachters möglichst gering zu halten, dürfen die Pole wiederum nicht zu weit links gesetzt werden (vgl.Bilder vergleich viel vs wenig rauschen). Aufgrund dessen haben wir uns entschieden die Beobachterpole lediglich nur drei Einheiten weiter links der des Zustandsreglers zu setzen, da diese bereits sehr klein waren. 
+	Hierzu haben wir die Struktur eines Luenberger-Beobachters eingesetzt und parallel zum            	Regelstreckenmodell geschaltet (vgl. Abb.~\ref{Regleraufbau}). Für die Wahl der Beobachterpole ist zu beachten, dass sich diese links der Pole des Zustandsreglers befinden, sodass die rekonstruierten Zustände den realen besser folgen. Um das verursachte Rauschen des Beobachters möglichst gering zu halten, dürfen die Pole wiederum nicht zu weit links gesetzt werden (vgl. Abb.~\ref{Rauschen1} und~\ref{Rauschen2}). Aufgrund dessen haben wir uns entschieden die Beobachterpole lediglich nur drei Einheiten weiter links der des Zustandsreglers zu setzen, da diese bereits sehr klein waren. 
 	
+	
+	\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Regler1.jpg}}
+	\label{Rauschen1}
+	\caption{Pole um drei Einheiten nach links}
+\end{figure}
+
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Regler1mal2.jpg}}
+	\label{Rauschen2}
+	\caption{Pole um das doppelte nach links}
+\end{figure}
+
+
 
 	%Zustandsrückführung mit Beobachter verbinden 
 
@@ -123,8 +155,22 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%Ruhelage ist kein Vorfilter nötig
 	%Abweichung mit Vorfilter bleibende RA 0.03 ohne Vorfilter bleibende RA 0.25
 	%Ist aufgrund der rekonstruierten Zustände vllt noch zu verantworten
-	Aus der Wettbewerbsaufgabe geht hervor, dass das Segway die Wippe nicht nur in der Mitte, sondern auch für andere Referenzpositionen $x^{}_{ref}$ = 0 stabilisieren soll. Wird die Referenzposition $x^{}_{ref}$ ungleich 0 gewählt, kommt es zu einer bleibenden Regelabweichung. Dieses Problem wird mit einem Vorfilter gelöst. (vgl Plot). Wie aus der Abb. zu erkennen ist, 
+	Aus der Wettbewerbsaufgabe geht hervor, dass das Segway die Wippe nicht nur in der Mitte, sondern auch für andere Referenzpositionen $x^{}_{ref}$ = 0 stabilisieren soll. Wird die Referenzposition $x^{}_{ref}$ ungleich 0 gewählt, kommt es zu einer bleibenden Regelabweichung. Dieses Problem wird mit einem Vorfilter gelöst (vgl. Abb.~\ref{MitVorfilter}~\ref{OhneVorfilter}). Wie aus der Abb. zu erkennen ist, 
 	Ungeachtet des implementierten Vorfilters ist noch eine bleibende Regelabweichung von ca. 0.03 Einheiten festzustellen. Dies scheint sich auf dem Beobachter zurückzuführen, weil dieser die Zustände nicht exakt rekonstruieren kann.  
+
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Plots/MitVorfilter.jpg}}
+	\label{MitVorfilter}
+	\caption{Mit Vorfilter}
+\end{figure}
+
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Plots/OhneVorfilter.jpg}}
+	\label{OhneVorfilter}
+	\caption{Ohne Vorfilter}
+\end{figure}
+
+
 
 
 \section{Fazit}
@@ -146,20 +192,18 @@ Unsere Ziele: 1. Stabilisierung des Segways um dessen instabilen Ruhelagen (dami
 Sollpositionen werden fast immer erreicht obwohl diese variiert werden können. Diese kann man im Simulink Modell beliebig eintragen.
 
 Zudem stellte sich heraus, dass durch die Wahl der Anfangsbedingung $\alpha^{}_{s}$ auf 0.5 Grad unserer Regler eine bessere Performance zeigt als mit 0 Grad.  
-  
 
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Alf0undRef0.jpg}}
+	\label{fig:theFig}
+	\caption{\textit{$\alpha^{}_{s}$ = 0}}
+\end{figure}
 
-
-$\alpha^{}_{s}$
-
-
-%\begin{figure}[h] % use \begin{figure*} for two-column figure
-%\begin{center}
-%\input{inout_ramps.tex}
-%\caption{Some arbitrary plot (using tikz) which doesn't have anything to do with Projektwettbewerb ERT.}
-%\label{fig1}
-%\end{center}
-%\end{figure}
+\begin{figure}[h]	
+\centerline{\includegraphics[width=\linewidth]{Bilder/Alf05undRef0.jpg}}
+	\label{fig:theFig}
+	\caption{\textit{$\alpha^{}_{s}$ = 0.5}}
+\end{figure}
 
 
 
