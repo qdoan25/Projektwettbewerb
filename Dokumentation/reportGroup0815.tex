@@ -63,8 +63,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%sechs Zustände
 	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch 		im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
 	Dabei hat der Zustandsvektor folgende Form:
-	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]^T
-	wobei \\
+%	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]^{T} \\
 	$\alpha^{}_{\omega}$: Winkel\\
 	$\dot{\alpha^{}_{\omega}}$: Drehgeschwindigkeit der Wippe\\
 	x:  Position der Radachse\\
@@ -86,62 +85,82 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 %Modellierung => Linearisierung
 
 	\subsection{Linearisierung}
+	%Anfangsbedinungen bzw. Ruhelagen alpha_s = 0 vgl. alpha_s = 0.5
 	Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung ``Einführung in die Regelungstechnik''. 
-	Eine Linearisierung des Systems um den stationären Arbeitspunkt ist daher nötig.
-
-	\subsection {Stabilität}
-	%Steuerbar => Reglerpole vorgebbar
-	% => Zustandsrückführung
-	%Erwähne Umrechnung der Stellgröße
+	Eine Linearisierung des Systems um den stationären Arbeitspunkt ist daher nötig. Gegeben waren linearisierte Systemmatrizen, damit Folgefehler vermieden werden konnten. 
+	
+	\subsection{Stabilität}
+	Wir haben das linearisierte System mittels MATLAB auf Stabilität überprüft. Da alle Eigenwerte negativ waren, ist asymptotische Stabilität garantiert.
+	%evtl Eigenwerte
+	
+	\subsection{Zustandsregler}
 	%LQR-Regler
+	Da das linearistierte System steuerbar ist, sind die Pole der Strecke mittels eines Regler 			beliebig vorgebbar. Um die optimalen Sollpole zu finden, wurde ein LQR-Regler gewählt, 				welcher mittels der Gewichtungsmatrizen \textit{Q} und \textit{R} eingestellt wurde.
+	Durch iteratives Vorgehen haben wir für Q eine Einheitsmatrix gewählt, was einer   					gleichstarken Gewichtung der Zustände entspricht. R wurde auf 1 gesetzt.
+	
+\begin{figure}[h]	\centerline{\includegraphics[width=\linewidth]{PID-Regler.eps}}
+	\label{fig:theFig}
+	\caption{\textit{PID-Regler}\newline \textbf{links}: kein D-Anteil; \textbf{Mitte}: D-Anteil passend; \textbf{rechts}: D-Anteil zu groß}
+\end{figure}
 
-%Regler mit nichtlinearen System zusammengeschaltet
 
-	\subsection {Beobachter}
-		%Linearisiertes System ist beobachtbar
-	%Pole vorgebbar => Beobachter, da nicht alle Zustände messbar
-	%Lueberger Beobachter 
+	%Regler mit nichtlinearen System zusammengeschaltet
+
+	\subsection{Beobachter}
+		
+	Da am eigentlichen System nicht alle Zustände messbar sind, die für die Zustandsregelung 			mit dem LQR-Regler gebraucht werden, ist die Zuschaltung eines Beobachters nötig.
+	Um diesen zu realisieren muss die Beobachtbarkeit des linearen Systems gewährleistet sein.
+	Dies hat sich durch einer Analyse bestätigt.
+	Hierzu haben wir die Struktur eines Luenberger-Beobachters eingesetzt und parallel zum            	Regelstreckenmodell geschaltet (vgl. Screenshot). Für die Wahl der Beobachterpole ist zu beachten, dass sich diese links der Pole des Zustandsreglers befinden, sodass die rekonstruierten Zustände den realen besser folgen. Um das verursachte Rauschen des Beobachters möglichst gering zu halten, dürfen die Pole wiederum nicht zu weit links gesetzt werden (vgl.Bilder vergleich viel vs wenig rauschen). Aufgrund dessen haben wir uns entschieden die Beobachterpole lediglich nur drei Einheiten weiter links der des Zustandsreglers zu setzen, da diese bereits sehr klein waren. 
+	
 
 	%Zustandsrückführung mit Beobachter verbinden 
 
-	\subsection{Bleibende Regelaweichung}
+	\subsection{Vorfilter}
 	%Regelaweichung => Vorfilter
+	%Wettbewerbsaufgabe für andere Ref größen
+	%Plots mit und ohne Vorfilter bei 0.2 Refgröße
+	%Ruhelage ist kein Vorfilter nötig
+	%Abweichung mit Vorfilter bleibende RA 0.03 ohne Vorfilter bleibende RA 0.25
+	%Ist aufgrund der rekonstruierten Zustände vllt noch zu verantworten
+	Aus der Wettbewerbsaufgabe geht hervor, dass das Segway die Wippe nicht nur in der Mitte, sondern auch für andere Referenzpositionen $x^{}_{ref}$ = 0 stabilisieren soll. Wird die Referenzposition $x^{}_{ref}$ ungleich 0 gewählt, kommt es zu einer bleibenden Regelabweichung. Dieses Problem wird mit einem Vorfilter gelöst. (vgl Plot). Wie aus der Abb. zu erkennen ist, 
+	Ungeachtet des implementierten Vorfilters ist noch eine bleibende Regelabweichung von ca. 0.03 Einheiten festzustellen. Dies scheint sich auf dem Beobachter zurückzuführen, weil dieser die Zustände nicht exakt rekonstruieren kann.  
 
-
-
-
-
-\begin{table}[h]
-\caption{Important Parameters.}
-\label{table:working plan}
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\bfseries Parameter & \bfseries Value \\ \hline \hline
-lap time $t_{\text{f}}$ & $\infty$ \\ \hline
-control gain $k$ & $0$ \\ \hline
-steering angle $\delta$ & $-\left( e^{i \pi}+1\right)$ \\ \hline
- \end{tabular}
-\end{table}
 
 \section{Fazit}
-We have achieved a lap time of $t_{\text{f}}=\infty$. We have depicted a plot of vehicle velocity $v$ versus an independent curve parameter $\gamma$, with which we have parameterized the racetrack, in Fig. 1. 
 
-\begin{figure}[h] % use \begin{figure*} for two-column figure
-\begin{center}
-\input{inout_ramps.tex}
-\caption{Some arbitrary plot (using tikz) which doesn't have anything to do with Projektwettbewerb ERT.}
-\label{fig1}
-\end{center}
-\end{figure}
+%was erreicht?
+%sollposition
+%Anfangsbedingung 0.5 wegen rand besser als 0
+Unsere Ziele: 1. Stabilisierung des Segways um dessen instabilen Ruhelagen (damit des Swegway nicht umkippt) 2. Regelung der Position des Segways auf der Wippe (mit der Begrenzung der Dimension der Wippe) wurden durch die folgenden Punkte erreicht:
 
-\begin{figure}[h] % use \begin{figure*} for two-column figure
-\begin{center}
-\includegraphics[width=.8\columnwidth]{bode} % inclusion of pdf or png
-\caption{Some arbitrary plot (using png) which doesn't have anything to do with Projektwettbewerb ERT.}
-\label{fig1}
-\end{center}
-\end{figure}
+\begin{itemize}
+\item Mathematische Modellbeschreibung (Herleitung der Bewegungsgleichungen)  
+\item Festlegung von nominellen Parameterwerten und Systemgrößen mit ihren Begrenzungen  
+\item Linearisierung des nicht-linearen mathematischen Modells um die Ruhelage
+\item Reglerentwurf
+\item Beobachterentwurf
+\item Implementierung von einem Vorfilter
+\end{itemize}
+
+Sollpositionen werden fast immer erreicht obwohl diese variiert werden können. Diese kann man im Simulink Modell beliebig eintragen.
+
+Zudem stellte sich heraus, dass durch die Wahl der Anfangsbedingung $\alpha^{}_{s}$ auf 0.5 Grad unserer Regler eine bessere Performance zeigt als mit 0 Grad.  
+  
+
+
+
+$\alpha^{}_{s}$
+
+
+%\begin{figure}[h] % use \begin{figure*} for two-column figure
+%\begin{center}
+%\input{inout_ramps.tex}
+%\caption{Some arbitrary plot (using tikz) which doesn't have anything to do with Projektwettbewerb ERT.}
+%\label{fig1}
+%\end{center}
+%\end{figure}
+
 
 
 \bibliography{Literatur}
