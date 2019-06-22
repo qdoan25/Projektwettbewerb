@@ -26,16 +26,14 @@
 
 \begin{frontmatter}
 
-\title{``Projektwettbewerb Einführung in die Regelungstechnik'' - Stabilisierung eines
-Segways auf einer
-Wippe}
+\title{``Projektwettbewerb Einführung in die Regelungstechnik'' - Stabilisierung eines Segways auf einer Wippe}
 
 %\thanks[footnoteinfo]{Institute for Systems Theory and Automatic Control, University of Stuttgart, Germany. \textit{http://www.ist.uni-stuttgart.de}}
 
 % include all authors, underline corresponding author
 %\author{\underline{},} 
-\author{Alessio Gaggiano (Kyb 3129632), Shadi Rafe(Kyb ********), Truc-Quynh Doan(Kyb 3152793)} 
-
+%\author{Alessio Gaggiano (Kyb 3129632), Shadi Rafe (Kyb ********), Truc-Quynh Doan (Kyb 3152793)}  %passt nicht rein 
+\textbf{\makebox[\linewidth][c]{Alessio Gaggiano (Kyb 3129632), Shadi Rafe (Kyb 2922872), Truc-Quynh Doan (Kyb 3152793)}}
 
 \begin{abstract}\\                          % Abstract of not more than 250 words.
 Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes und der Ergebnisse der regelungstechnischen Aufgabe ``Stabilisierung eines Segways auf einer Wippe''. 
@@ -52,29 +50,30 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 %füge Abb.SystematischerAufbau.jpg ein
 
 	\subsection{Wippe}
-	Die Wippe hat eine rechteckige Auflage und ist 1.2m lang und 0.6m breit, auf welcher sich der Roboter vor- und zurückbewegen kann.
-	Da die Bewegungsrichtung des Roboters nur einseitig erfolgt, ergibt sich daraus eine Beschränkung der Strecke von [-0.6,0.6].
-	Die Drehung der Wippe ist auf alphaw = [-pi/6, pi/6] beschränkt.
+	Die Wippe hat eine rechteckige Auflage und ist 1.2m lang und 0.6m breit, auf 			welcher sich der Roboter vor- und zurückbewegen kann.
+	Da die Bewegungsrichtung des Roboters nur einseitig erfolgt, ergibt sich daraus 		eine Beschränkung der Strecke von [-0.6, 0.6].
+	Die Drehung der Wippe ist auf $\alpha^{}_{\omega}$ = [-$\frac{\pi}{6}$, $\frac{\pi}{6}$] beschränkt.
 	Die Mitte der Wippe ist dabei die dunkelste Stelle des Farbverlaufs. Vgl. Abb. 
 	\subsection{Segway}
-	Die Raddrehung des Segways wird ohne Schlupf und ohne Reibung angenommen und der Schwerpunkt der Gesamtmasse ist im Punkt S konzentriert. 
-	In der Regelungsaufgabe ist die absolute Drehung des Segways zur Vertikalen auf alphas = [-7*pi/6, 7*pi/6] beschränkt. %? 
+	Die Raddrehung des Segways wird ohne Schlupf und ohne Reibung angenommen und der 		Schwerpunkt der Gesamtmasse ist im Punkt S konzentriert. 
+	In der Regelungsaufgabe ist die absolute Drehung des Segways zur Vertikalen auf 		$\alpha^{}_{s}$ = [-$\frac{7\pi}{6}$, $\frac{7\pi}{6}$] beschränkt. %? 
 
 	\subsection{Zustandsraum}
 	%Erwähne die Komponenten der generalisierten Koordinaten
 	%sechs Zustände
-	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
+	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch 		im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
 	Dabei hat der Zustandsvektor folgende Form:
-	%....Formel z = [..]
-	wobei alphaw: 
-	alphawp:
-	x:
-	xp:
-	alphs:
-	alphasp:
+	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$] trans
+	wobei \\
+	$\alpha^{}_{\omega}$: Winkel\\
+	$\dot{\alpha^{}_{\omega}}$: Drehgeschwindigkeit der Wippe\\
+	x:  Position der Radachse\\
+	\.{x}:  Drehgeschwindigkeit des Rades\\
+	$\alpha^{}_{s}$: absoluter Drehwinkel des Segways zur Vertikalen\\
+	$\dot{\alpha^{}_{s}}$: absolute Drehgeschwindigkeit des Segways\\
 	
 		\subsubsection{Messgrößen}
-		Mittels des Lichtsensors wird die Position der Radachse x über den Farbverlauf der Wippe gemessen. Der eingebaute Gyroskop misst die absolute Drehgeschwindigkeit alphasp des Segways.
+		Mittels des Lichtsensors wird die Position der Radachse \textit{x} über den 		Farbverlauf der Wippe gemessen. Der eingebaute Gyroskop misst die absolute Drehgeschwindigkeit $\dot{\alpha^{}_{s}}$ des Segways.
 		
 		\subsubsection{Stellgröße}
 		Die uns zur Verfügung stehende Stellgröße entspricht der elektrischen Motorleistung des Segways. Diese ist auf 3.56 Watt (vgl. Tabelle) beschränkt.
