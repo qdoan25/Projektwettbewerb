@@ -1,8 +1,39 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[mat({\natexlab{a}})]{matlabDoc}
+Matlab dokumentation, {\natexlab{a}}.
+\newblock URL \url{http://de.mathworks.com/help/matlab/index.html}.
+
+\bibitem[mat({\natexlab{b}})]{matlabTut}
+Interaktive tutorials zu matlab und simulink, {\natexlab{b}}.
+\newblock URL \url{http://www.mathworks.de/academia/student
+  center/tutorials/index.html}.
+
+\bibitem[fuer Systemtheorie~und Regelungstechnik Prof. Dr.-Ing.
+  F.~Allgoewer(2012)]{handoutBeobachter}
+Institut fuer Systemtheorie~und Regelungstechnik Prof. Dr.-Ing. F.~Allgoewer.
+\newblock Handout: Zustandsrekonstruktion mittels beobachter, beobachtbarkeit
+  und separationsprinzip, January 2012.
+\newblock URL \url{http://www.ist.uni-stuttgart.de/education/courses/ERT/}.
+\newblock Uni Stuttgart.
+
+\bibitem[fuer Systemtheorie~und Regelungstechnik Prof. Dr.-Ing.
+  F.~Allgoewer(2016)]{handoutErwRegelStruk}
+Institut fuer Systemtheorie~und Regelungstechnik Prof. Dr.-Ing. F.~Allgoewer.
+\newblock Handout: Erweiterte regelkreisstrukturen, February 2016.
+\newblock URL \url{http://www.ist.uni-stuttgart.de/education/courses/ERT/}.
+\newblock Uni Stuttgart.
+
+\bibitem[Martin(SoSe 2019)]{projektwettbewerb}
+M.Sc.~Tim Martin.
+\newblock Projekt- wettbewerb stabilisierung eines segways auf einer wippe,
+  SoSe 2019.
+\newblock Universitaet Stuttgart Institut fuer Systemtheorie und
+  Regelungstechnik.
 
 \end{thebibliography}

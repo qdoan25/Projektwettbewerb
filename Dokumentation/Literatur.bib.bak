@@ -50,12 +50,9 @@
 }
 
 @Misc{lqrYt,
-  title        = {State Space, Part 4: What is LQR control?},
-  howpublished = {YouTube},
-  month        = feb,
-  year         = {2019},
-  note         = {YouTube Channel: MATLAB},
-  url          = {https://www.youtube.com/watch?v=E_RDCFOlJx4&t=333s},
+  title = {State Space, Part 4: What is LQR control?},
+  note  = {YouTube Channel: MATLAB},
+  url   = {https://www.youtube.com/watch?v=E_RDCFOlJx4&t=333s},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

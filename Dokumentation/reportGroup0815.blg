@@ -1,5 +1,12 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: reportGroup0815.aux
 The style file: plainnat.bst
-I found no \citation commands---while reading file reportGroup0815.aux
+Illegal, another \bibstyle command---line 3 of file reportGroup0815.aux
+ : \bibstyle
+ :          {babunsrt}
+I'm skipping whatever remains of this command
 Database file #1: Literatur.bib
+Warning--to sort, need author or key in matlabTut
+Warning--to sort, need author or key in matlabDoc
+Warning--empty year in matlabDoc
+Warning--empty year in matlabTut
 (There was 1 error message)

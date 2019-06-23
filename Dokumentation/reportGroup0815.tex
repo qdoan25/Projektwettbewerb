@@ -10,7 +10,7 @@
                                
 \usepackage{units}
 %\usepackage{babelbib}
-%\bibliographystyle{babunsrt}
+\bibliographystyle{unsrt}
 
 % for German
 \usepackage{ngerman}           % neue Deutsche Rechtschreibung, Silbentrennung
@@ -35,9 +35,8 @@
 %\author{Alessio Gaggiano (Kyb 3129632), Shadi Rafe (Kyb ********), Truc-Quynh Doan (Kyb 3152793)}  %passt nicht rein 
 \textbf{\makebox[\linewidth][c]{Alessio Gaggiano (Kyb 3129632), Shadi Rafe (Kyb 2922872), Truc-Quynh Doan (Kyb 3152793)}}
 
-\begin{abstract}\\                          % Abstract of not more than 250 words.
+\begin{abstract}\\                        
 Die folgende Dokumentation beinhaltet die ausführliche Beschreibung unseres Lösungsansatzes und der Ergebnisse der regelungstechnischen Aufgabe ``Stabilisierung eines Segways auf einer Wippe''. 
-%This is a template for the laboratory course ``Projektwettbewerb Einführung in die Regelungstechnik'' at the Institute for Systems Theory and Automatic Control, University of Stuttgart. Use this document to write your report with \LaTeX\ (cf. \cite{Knuth2005}).
 \end{abstract}
 
 \end{frontmatter}
@@ -75,7 +74,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%sechs Zustände
 	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch 		im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
 	Dabei hat der Zustandsvektor folgende Form:
-	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]^{T} \\
+	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ $x$ $\dot{x}$ $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$] \\
 	$\alpha^{}_{\omega}$: Winkel\\
 	$\dot{\alpha^{}_{\omega}}$: Drehgeschwindigkeit der Wippe\\
 	x:  Position der Radachse\\
@@ -128,12 +127,12 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	Hierzu haben wir die Struktur eines Luenberger-Beobachters eingesetzt und parallel zum            	Regelstreckenmodell geschaltet (vgl. Abb. \ref{fig:Regleraufbau}). Für die Wahl der Beobachterpole ist zu beachten, dass sich diese links der Pole des Zustandsreglers befinden, sodass die rekonstruierten Zustände den realen besser folgen. Um das verursachte Rauschen des Beobachters möglichst gering zu halten, dürfen die Pole wiederum nicht zu weit links gesetzt werden (vgl. Abb. \ref{fig:Rauschen1} und \ref{fig:Rauschen2}). Aufgrund dessen haben wir uns entschieden die Beobachterpole lediglich nur drei Einheiten weiter links der des Zustandsreglers zu setzen, da diese bereits sehr klein waren. 
 	
 	
-	\begin{figure}[H]	
+	\begin{figure}[h]	
 \centerline{\includegraphics[width=\linewidth]{Bilder/Regler1.jpg}}
 	\caption{Pole um drei Einheiten nach links}	\label{fig:Rauschen1}
 \end{figure}
 
-\begin{figure}[H]	
+\begin{figure}[h]	
 \centerline{\includegraphics[width=\linewidth]{Bilder/Regler1mal2.jpg}}
 	\caption{Pole um das doppelte nach links}	\label{fig:Rauschen2}
 \end{figure}
@@ -202,14 +201,21 @@ Zudem stellte sich heraus, dass durch die Wahl der Anfangsbedingung $\alpha^{}_{
 
 \bibliography{Literatur}
 
+\citet{projektwettbewerb}
+\citet{matlabTut}
+\citet{handoutBeobachter}
+\citet{handoutErwRegelStruk}
+\citet{matlabDoc}
+
 
 %\begin{thebibliography}{3}
 %
-%\bibitem[(Knuth2005)]{Knuth2005}
+%\bibitem{projektWettbewerb}
 %Knuth,~D.~E. (2005).
 %\newblock The Art of Computer Programming.
 %\newblock Pearson Education.
-%
+
+
 %\end{thebibliography}
 
 %\appendix

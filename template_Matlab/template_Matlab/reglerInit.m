@@ -1,6 +1,6 @@
 %% Initialisierung des Reglers
 
-alpha_sStart = 0.5; % Startposition (Winkel) des Roboters
+alpha_sStart = 0.6; % Startposition (Winkel) des Roboters
 % Systemmatrizen
 A = [0 1 0 0 0 0;...
     9.84 -0.33 -6.9 0.08 -10.85 0;...
