@@ -75,7 +75,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%sechs Zustände
 	Mit Hilfe der Lagrange-Gleichungen zweiter Art lässt sich das System mechanisch 		im Zeitbereich beschreiben und daraus ein Zustandsraum herleiten.
 	Dabei hat der Zustandsvektor folgende Form:
-	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]%^{T} \\
+	z = [$\alpha^{}_{\omega}$ $\dot{\alpha^{}_{\omega}}$ x \.{x} $\alpha^{}_{s}$ $\dot{\alpha^{}_{s}}$]^{T} \\
 	$\alpha^{}_{\omega}$: Winkel\\
 	$\dot{\alpha^{}_{\omega}}$: Drehgeschwindigkeit der Wippe\\
 	x:  Position der Radachse\\
@@ -87,7 +87,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 		Mittels des Lichtsensors wird die Position der Radachse \textit{x} über den 		Farbverlauf der Wippe gemessen. Der eingebaute Gyroskop misst die absolute Drehgeschwindigkeit $\dot{\alpha^{}_{s}}$ des Segways.
 		
 		\subsubsection{Stellgröße}
-		Die uns zur Verfügung stehende Stellgröße entspricht der elektrischen Motorleistung des Segways. Diese ist auf 3.56 Watt (vgl. Tabelle) beschränkt.
+		Die uns zur Verfügung stehende Stellgröße entspricht der elektrischen Motorleistung des Segways. Diese ist auf 3.56 Watt beschränkt.
 		Hier wurde zwischen absoluter und relativer Leistung unterschieden. Mit Hilfe einer gegebenen Motorkennlinie für verschiedene Leistungsstufen ließen sich die Stellgrößenbeschränkungen aus den folgenden Zusammenhang ermitteln.
 		%umwandlung rel. und abs. 
 
@@ -106,7 +106,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	\subsection{Linearisierung}
 	%Anfangsbedinungen bzw. Ruhelagen alpha_s = 0 vgl. alpha_s = 0.5
 	Die uns vorliegende Modellierung des Regelsystems ist nichtlinear, daher erlaubte dies uns keine einfache Implementierung einer Regelung nach den uns bekannten Methoden der Vorlesung ``Einführung in die Regelungstechnik''. 
-	Eine Linearisierung des Systems um den stationären Arbeitspunkt ist daher nötig. Gegeben waren linearisierte Systemmatrizen, damit Folgefehler vermieden werden konnten. 
+	Eine Linearisierung des Systems um den stationären Arbeitspunkt war daher nötig. Gegeben waren linearisierte Systemmatrizen, damit Folgefehler vermieden werden konnten. 
 	
 	\subsection{Stabilität}
 	Wir haben das linearisierte System mittels MATLAB auf Stabilität überprüft. Da alle Eigenwerte negativ waren, ist asymptotische Stabilität garantiert.
@@ -124,7 +124,7 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	\subsection{Beobachter}
 		Da am eigentlichen System nicht alle Zustände messbar sind, die für die Zustandsregelung 			mit dem LQR-Regler gebraucht werden, ist die Zuschaltung eines Beobachters nötig.
 	Um diesen zu realisieren muss die Beobachtbarkeit des linearen Systems gewährleistet sein.
-	Dies hat sich durch einer Analyse bestätigt.
+	Diese hat sich durch einer Analyse bestätigt.
 	Hierzu haben wir die Struktur eines Luenberger-Beobachters eingesetzt und parallel zum            	Regelstreckenmodell geschaltet (vgl. Abb. \ref{fig:Regleraufbau}). Für die Wahl der Beobachterpole ist zu beachten, dass sich diese links der Pole des Zustandsreglers befinden, sodass die rekonstruierten Zustände den realen besser folgen. Um das verursachte Rauschen des Beobachters möglichst gering zu halten, dürfen die Pole wiederum nicht zu weit links gesetzt werden (vgl. Abb. \ref{fig:Rauschen1} und \ref{fig:Rauschen2}). Aufgrund dessen haben wir uns entschieden die Beobachterpole lediglich nur drei Einheiten weiter links der des Zustandsreglers zu setzen, da diese bereits sehr klein waren. 
 	
 	
@@ -149,8 +149,8 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 	%Ruhelage ist kein Vorfilter nötig
 	%Abweichung mit Vorfilter bleibende RA 0.03 ohne Vorfilter bleibende RA 0.25
 	%Ist aufgrund der rekonstruierten Zustände vllt noch zu verantworten
-	Aus der Wettbewerbsaufgabe geht hervor, dass das Segway die Wippe nicht nur in der Mitte, sondern auch für andere Referenzpositionen $x^{}_{ref}$ = 0 stabilisieren soll. Wird die Referenzposition $x^{}_{ref}$ ungleich 0 gewählt, kommt es zu einer bleibenden Regelabweichung. Dieses Problem wird mit einem Vorfilter gelöst (vgl. Abb. \ref{fig:MitVorfilter} und \ref{fig:OhneVorfilter}). Wie zu erkennen ist, 
-	ungeachtet des implementierten Vorfilters, ist noch eine bleibende Regelabweichung von ca. 0.03 Einheiten festzustellen. Dies scheint sich auf dem Beobachter zurückzuführen, weil dieser die Zustände nicht exakt rekonstruieren kann.  
+	Aus der Wettbewerbsaufgabe geht hervor, dass das Segway die Wippe nicht nur in der Mitte $x^{}_{ref}$ = 0, sondern auch für andere Referenzpositionen stabilisieren soll. Wird die Referenzposition $x^{}_{ref}$ ungleich 0 gewählt, kommt es zu einer bleibenden Regelabweichung. Dieses Problem wurde mit einem Vorfilter gelöst (vgl. Abb. \ref{fig:MitVorfilter} und \ref{fig:OhneVorfilter}). Wie zu erkennen ist, 
+	ist ungeachtet des implementierten Vorfilters, noch eine bleibende Regelabweichung von ca. 0.03 Einheiten festzustellen. Dies scheint sich auf dem Beobachter zurückzuführen, der die Zustände nicht exakt rekonstruieren kann.  
 
 \begin{figure}[h]	
 \centerline{\includegraphics[width=\linewidth]{Bilder/Plots/MitVorfilter.jpg}}
@@ -166,18 +166,17 @@ Die uns gestellte Regelungsaufgabe verlangte eine Stabilisierung eines Segways a
 
 
 
-
 \section{Fazit}
 
 %was erreicht?
 %sollposition
 %Anfangsbedingung 0.5 wegen rand besser als 0
-Unsere Ziele: 1. Stabilisierung des Segways um dessen instabilen Ruhelagen (damit des Swegway nicht umkippt) 2. Regelung der Position des Segways auf der Wippe (mit der Begrenzung der Dimension der Wippe) wurden durch die folgenden Punkte erreicht:
+Unsere Ziele: \\1. Stabilisierung des Segways um dessen instabilen Ruhelagen (damit des Segway nicht umkippt) \\2. Regelung der Position des Segways auf der Wippe (mit der Begrenzung der Dimension der Wippe) \\wurden durch die folgenden Punkte erreicht:
 
 \begin{itemize}
 \item Mathematische Modellbeschreibung (Herleitung der Bewegungsgleichungen)  
 \item Festlegung von nominellen Parameterwerten und Systemgrößen mit ihren Begrenzungen  
-\item Linearisierung des nicht-linearen mathematischen Modells um die Ruhelage
+\item Linearisierung des nichtlinearen mathematischen Modells um die Ruhelage
 \item Reglerentwurf
 \item Beobachterentwurf
 \item Implementierung von einem Vorfilter
